@@ -63,11 +63,12 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+                        searchResults = JobData.FindByValue(searchTerm.ToLower());
+                        PrintJobs(searchResults);
                     }
                     else
                     {
-                        searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
+                        searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm.ToLower());
                         PrintJobs(searchResults);
                     }
                 }
@@ -127,7 +128,7 @@ namespace TechJobsConsole
                     {
                         Console.WriteLine(job.Key + ": " + job.Value);
                     }
-                    Console.WriteLine("*****");
+                    Console.WriteLine("*****\n");
                 }
             } else
             {
